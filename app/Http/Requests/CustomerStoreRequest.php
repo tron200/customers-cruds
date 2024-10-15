@@ -18,9 +18,9 @@ class CustomerStoreRequest extends FormRequest
             'image' => ['nullable'],
             'first_name' => ['required', 'max:255', 'string'],
             'last_name' => ['required', 'max:255', 'string'],
-            'email' => ['required', 'email'],
-            'phone' => ['required', 'string'],
-            'bank_account_number' => ['required', 'numeric'],
+            'email' => ['required', 'email', 'max:50'],
+            'phone' => ['required', 'string', 'max:50'],
+            'bank_account_number' => ['required', 'string', 'max:50'],
             'about' => ['nullable', 'string', 'max:500']
         ];
     }
