@@ -15,12 +15,12 @@ class CustomerStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['nullable'],
+            'image' => ['nullable','image','max:3000'],//kb
             'first_name' => ['required', 'max:255', 'string'],
             'last_name' => ['required', 'max:255', 'string'],
-            'email' => ['required', 'email', 'max:50'],
+            'email' => ['required', 'email', 'max:255'],
             'phone' => ['required', 'string', 'max:50'],
-            'bank_account_number' => ['required', 'string', 'max:50'],
+            'bank_account_number' => ['required', 'numeric'],
             'about' => ['nullable', 'string', 'max:500']
         ];
     }

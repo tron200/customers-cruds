@@ -9,7 +9,7 @@
             @endforeach
             @endif
             <div class="card">
-                <form action="{{ route('customers.store') }}" method="POST">
+                <form action="{{ route('customers.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-header">
                         <div class="row">
@@ -64,7 +64,7 @@
                             <div class="col-md-12 mb-3">
                                 <div class="form-group">
                                     <label for="">About</label>
-                                    <textarea class="form-control" name="about">value="{{ old('about') }}</textarea>
+                                    <textarea class="form-control" name="about">{{ old('about') }}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">
