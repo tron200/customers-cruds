@@ -26,7 +26,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <img width="100" src="{{ $customer->image }}">
+                                <img width="100" src="{{ asset($customer->image) }}">
                                 <div class="form-group">
                                     <label for="">Image</label>
                                     <input type="file" class="form-control" name="image">
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <button type="submit" class="btn btn-dark"><i class="fas fa-save"></i> Create</button>
+                                <button type="submit" class="btn btn-dark"><i class="fas fa-save"></i> Update</button>
                             </div>
 
                         </div>
