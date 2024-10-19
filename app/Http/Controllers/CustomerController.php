@@ -57,7 +57,7 @@ class CustomerController extends Controller
     public function show(string $id)
     {
         $customer = Customer::findOrFail($id);
-        return view('customer.show',compact('customer'));
+        return view('customer.show', compact('customer'));
     }
 
     /**
@@ -66,7 +66,7 @@ class CustomerController extends Controller
     public function edit(string $id)
     {
         $customer = Customer::findOrFail($id);
-        return view('customer.update',compact('customer'));
+        return view('customer.update', compact('customer'));
     }
 
     /**
@@ -100,6 +100,9 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        File::delete(public_path($customer->image));
+        $customer->delete();
+        return redirect()->route('customers.index');
     }
 }

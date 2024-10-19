@@ -7,8 +7,9 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-2">
-                            <a href="{{ route('customers.create') }}" class="btn" style="background-color: #4643d3; color: white;"><i
-                                    class="fas fa-plus"></i> Create Customer</a>
+                            <a href="{{ route('customers.create') }}" class="btn"
+                                style="background-color: #4643d3; color: white;"><i class="fas fa-plus"></i> Create
+                                Customer</a>
                         </div>
                         <div class="col-md-8">
                             <form action="">
@@ -47,24 +48,27 @@
                         </thead>
                         <tbody>
                             @foreach ($customers as $customer)
-                                
-                            
-                            <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $customer->first_name }}</td>
-                                <td>{{ $customer->last_name }}</td>
-                                <td>{{ $customer->phone }}</td>
-                                <td>{{ $customer->email }}</td>
-                                <td>{{ $customer->bank_account_number }}</td>
-                                <td>
-                                    <a href="{{ route('customers.edit', $customer->id) }}" style="color: #2c2c2c;" class="ms-1 me-1"><i
-                                            class="far fa-edit"></i></a>
-                                    <a href="{{ route('customers.show', $customer->id) }}" style="color: #2c2c2c;" class="ms-1 me-1"><i
-                                            class="far fa-eye"></i></a>
-                                    <a href="" style="color: #2c2c2c;" class="ms-1 me-1"><i
-                                            class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $customer->first_name }}</td>
+                                    <td>{{ $customer->last_name }}</td>
+                                    <td>{{ $customer->phone }}</td>
+                                    <td>{{ $customer->email }}</td>
+                                    <td>{{ $customer->bank_account_number }}</td>
+                                    <td>
+                                        <a href="{{ route('customers.edit', $customer->id) }}" style="color: #2c2c2c;"
+                                            class="ms-1 me-1"><i class="far fa-edit"></i></a>
+                                        <a href="{{ route('customers.show', $customer->id) }}" style="color: #2c2c2c;"
+                                            class="ms-1 me-1"><i class="far fa-eye"></i></a>
+                                        <a href="javascript:;" onclick="$('.form-{{ $customer->id }}').submit()"
+                                            style="color: #2c2c2c;" class="ms-1 me-1"><i class="fas fa-trash-alt"></i></a>
+                                        <form class="form-{{ $customer->id }}"
+                                            action="{{ route('customers.destroy', $customer->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
