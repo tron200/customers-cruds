@@ -18,4 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('customers/trash',[CustomerController::class,'trashIndex'])->name('customers.trash');
+Route::get('customers/restore/{id}',[CustomerController::class,'restore'])->name('customers.restore');
+Route::delete('customers/forceDelete/{id}',[CustomerController::class,'forceDestroy'])->name('customers.forceDestroy');
 Route::resource('customers', CustomerController::class);
