@@ -14,12 +14,12 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        $customers = Customer::when($request->has('search'),function ($query) use ($request) {
-            $query->where('first_name','LIKE', "%$request->search%")
-            ->orWhere('last_name','LIKE', "%$request->search%")
-            ->orWhere('phone','LIKE', "%$request->search%")
-            ->orWhere('email','LIKE', "%$request->search%");
-        })->get();
+        $customers = Customer::when($request->has('search'), function ($query) use ($request) {
+            $query->where('first_name', 'LIKE', "%$request->search%")
+                ->orWhere('last_name', 'LIKE', "%$request->search%")
+                ->orWhere('phone', 'LIKE', "%$request->search%")
+                ->orWhere('email', 'LIKE', "%$request->search%");
+        })->orderBy('id',$request->has('order') && $request->order == 'asc'? 'ASC':'DESC')->get();
         return view('customer.index', compact('customers'));
     }
 
